@@ -1,36 +1,41 @@
-# Leak_test_VBA
-Lake_test_VBA
+Leak_test_VBA
+🚀 Uruchomienie
 
-## 📌 Opis
+    Upewnij się, że pliki:
+    red1.csv, yellow1.csv, green1.csv, blue1.csv
+    znajdują się w tym samym folderze co plik 1.Wykres.xlsm.
 
-Makro `ImportWszystkieDane` importuje dane z czterech plików CSV:
- (`red1.csv`, `yellow1.csv`, `green1.csv`, `blue1.csv`) do aktywnego arkusza Excela. Dane są następnie przetwarzane (rozdzielane) i kopiowane w odpowiednie miejsce w arkuszu.
+    Otwórz plik 1.Wykres.xlsm w programie Microsoft Excel.
 
-Główne funkcje:
-- Automatyczny import danych z plików CSV znajdujących się w tym samym folderze co plik `.xlsm`.
-- Parsowanie kolumn z wartościami liczbowymi w formacie tekstowym.
+    Włącz makra, jeśli pojawi się stosowny komunikat.
 
+🛠️ Odblokowanie pliku na nowym komputerze
 
-## 🚀 Uruchomienie
+Jeśli plik został pobrany z internetu lub e-maila, Excel może zablokować makra. Aby je odblokować:
 
-1. Otwórz plik `1.Wykres.xlsm` w Excelu.
-2. Upewnij się, że włączone są makra.
+    Zamknij plik Excela.
 
-## 🧱 Struktura kodu
+    Przejdź do folderu, w którym znajduje się 1.Wykres.xlsm.
 
-- `ImportWszystkieDane`: Główna procedura zarządzająca importem.
-- `ImportCSVred`: Specjalna wersja importera dla `red1.csv`, zapisuje dane do kolumn B i C.
-- `ImportCSV_Generic`: Importer dla pozostałych plików, zapisuje do kolumn D–F.
+    Kliknij prawym przyciskiem myszy na plik i wybierz Właściwości.
 
-## 🛠️ Przykład użycia
+    Zaznacz pole Odblokuj (jeśli jest dostępne).
 
-## ⚠️ Uwagi
-Cały kod jest umieszczony w Module1,
-Aby makro automatycznie się uruchamiało po kliknięciu w plik 1.Wykres.xlsm 
-Poniższy kod umieszczamy w miejscu: „Ten_skoroszyt”
-	Private Sub Workbook_Open()
-    		On Error Resume Next
-   		 Call ImportWszystkieDane
-  		  If Err.Number <> 0 Then MsgBox "Błąd przy imporcie: " & Err.Description
-   		 On Error GoTo 0
-End Sub
+    Kliknij Zastosuj, a następnie OK.
+
+    Otwórz ponownie plik w Excelu.
+
+⚙️ Uwagi techniczne
+
+    Cały kod znajduje się w module Module1.
+
+    Aby makro automatycznie uruchamiało się po otwarciu pliku, należy dodać poniższy kod do sekcji „Ten_skoroszyt” (ThisWorkbook):
+
+    	Private Sub Workbook_Open()
+   		On Error Resume Next
+    		Call ImportWszystkieDane
+    		If Err.Number <> 0 Then
+       		 MsgBox "Błąd przy imporcie: " & Err.Description
+    		End If
+    		On Error GoTo 0
+	End Sub
